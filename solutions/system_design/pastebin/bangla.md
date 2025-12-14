@@ -247,7 +247,7 @@ Initial design এর সাথে আপনি যে bottlenecks এর মু
 
 *আলোচনা repeat করা এড়াতে*, main talking points, tradeoffs, এবং alternatives এর জন্য নিম্নলিখিত [system design topics](../../bangla.md#index-of-system-design-topics) দেখুন:
 
-* [DNS](../../bangla.md#domain-name-system)
+* [DNS]((https://github.com/donnemartin/system-design-primer-bangla#domain-name-system)
 * [CDN](../../bangla.md#content-delivery-network)
 * [Load balancer](../../bangla.md#load-balancer)
 * [Horizontal scaling](../../bangla.md#horizontal-scaling)
@@ -330,4 +330,5 @@ Amazon S3 এর মতো একটি **Object Store** প্রতি মা�
 
 * Bottlenecks আসার সাথে সাথে address করতে আপনার system benchmark এবং monitor করা চালিয়ে যান
 * Scaling একটি iterative process
+
 
