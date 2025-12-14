@@ -247,18 +247,19 @@ Initial design এর সাথে আপনি যে bottlenecks এর মু
 
 *আলোচনা repeat করা এড়াতে*, main talking points, tradeoffs, এবং alternatives এর জন্য নিম্নলিখিত [system design topics](../../bangla.md#index-of-system-design-topics) দেখুন:
 
-* [DNS]((https://github.com/Shakil-khan59/system-design-primer-bangla#domain-name-system)
-* [CDN](../../bangla.md#content-delivery-network)
-* [Load balancer](../../bangla.md#load-balancer)
-* [Horizontal scaling](../../bangla.md#horizontal-scaling)
-* [Web server (reverse proxy)](../../bangla.md#reverse-proxy-web-server)
-* [API server (application layer)](../../bangla.md#application-layer)
-* [Cache](../../bangla.md#cache)
-* [Relational database management system (RDBMS)](../../bangla.md#relational-database-management-system-rdbms)
-* [SQL write master-slave failover](../../bangla.md#fail-over)
-* [Master-slave replication](../../bangla.md#master-slave-replication)
-* [Consistency patterns](../../bangla.md#consistency-patterns)
-* [Availability patterns](../../bangla.md#availability-patterns)
+* [DNS](https://github.com/Shakil-khan59/system-design-primer-bangla#domain-name-system)
+* [CDN](https://github.com/Shakil-khan59/system-design-primer-bangla#content-delivery-network)
+* [Load balancer](https://github.com/Shakil-khan59/system-design-primer-bangla#load-balancer)
+* [Horizontal scaling](https://github.com/Shakil-khan59/system-design-primer-bangla#horizontal-scaling)
+* [Web server (reverse proxy)](https://github.com/Shakil-khan59/system-design-primer-bangla#reverse-proxy-web-server)
+* [API server (application layer)](https://github.com/Shakil-khan59/system-design-primer-bangla#application-layer)
+* [Cache](https://github.com/Shakil-khan59/system-design-primer-bangla#cache)
+* [Relational database management system (RDBMS)](https://github.com/Shakil-khan59/system-design-primer-bangla#relational-database-management-system-rdbms)
+* [SQL write master-slave failover](https://github.com/Shakil-khan59/system-design-primer-bangla#fail-over)
+* [Master-slave replication](https://github.com/Shakil-khan59/system-design-primer-bangla#master-slave-replication)
+* [Consistency patterns](https://github.com/Shakil-khan59/system-design-primer-bangla#consistency-patterns)
+* [Availability patterns](https://github.com/Shakil-khan59/system-design-primer-bangla#availability-patterns)
+
 
 **Analytics Database** Amazon Redshift বা Google BigQuery এর মতো একটি data warehousing solution ব্যবহার করতে পারে।
 
@@ -330,6 +331,7 @@ Amazon S3 এর মতো একটি **Object Store** প্রতি মা�
 
 * Bottlenecks আসার সাথে সাথে address করতে আপনার system benchmark এবং monitor করা চালিয়ে যান
 * Scaling একটি iterative process
+
 
 
 
