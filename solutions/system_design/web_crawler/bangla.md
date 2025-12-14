@@ -1,6 +1,6 @@
 # Design a web crawler
 
-*নোট: এই document [system design topics](../../bangla.md#index-of-system-design-topics) এ পাওয়া relevant areas এর সাথে সরাসরি link করে duplication এড়াতে। সাধারণ talking points, tradeoffs, এবং alternatives এর জন্য linked content দেখুন।*
+*নোট: এই document [system design topics](https://github.com/Shakil-khan59/system-design-primer-bangla#index-of-system-design-topics) এ পাওয়া relevant areas এর সাথে সরাসরি link করে duplication এড়াতে। সাধারণ talking points, tradeoffs, এবং alternatives এর জন্য linked content দেখুন।*
 
 ## Step 1: Outline use cases and constraints
 
@@ -81,7 +81,7 @@ Handy conversion guide:
 
 আমরা processed links এবং তাদের page signatures store করতে একটি table `crawled_links` ব্যবহার করব।
 
-আমরা `links_to_crawl` এবং `crawled_links` একটি key-value **NoSQL Database** এ store করতে পারি। `links_to_crawl` এ ranked links এর জন্য, আমরা page links এর ranking maintain করতে sorted sets সহ [Redis](https://redis.io/) ব্যবহার করতে পারি। আমাদের [SQL বা NoSQL বেছে নেওয়ার use cases এবং tradeoffs](../../bangla.md#sql-or-nosql) নিয়ে আলোচনা করা উচিত।
+আমরা `links_to_crawl` এবং `crawled_links` একটি key-value **NoSQL Database** এ store করতে পারি। `links_to_crawl` এ ranked links এর জন্য, আমরা page links এর ranking maintain করতে sorted sets সহ [Redis](https://redis.io/) ব্যবহার করতে পারি। আমাদের [SQL বা NoSQL বেছে নেওয়ার use cases এবং tradeoffs](https://github.com/Shakil-khan59/system-design-primer-bangla#sql-or-nosql) নিয়ে আলোচনা করা উচিত।
 
 * **Crawler Service** একটি loop এ নিম্নলিখিত কাজগুলো করে প্রতিটি page link process করে:
     * Crawl করার জন্য top ranked page link নেয়
@@ -211,7 +211,7 @@ Pages regularly crawl করা প্রয়োজন freshness নিশ্�
 
 ### Use case: User inputs a search term and sees a list of relevant pages with titles and snippets
 
-* **Client** **Web Server** এ একটি request পাঠায়, একটি [reverse proxy](../../bangla.md#reverse-proxy-web-server) হিসাবে চলছে
+* **Client** **Web Server** এ একটি request পাঠায়, একটি [reverse proxy](https://github.com/Shakil-khan59/system-design-primer-bangla#reverse-proxy-web-server) হিসাবে চলছে
 * **Web Server** request **Query API** server এ forward করে
 * **Query API** server নিম্নলিখিত কাজগুলো করে:
     * Query parse করে
@@ -224,7 +224,7 @@ Pages regularly crawl করা প্রয়োজন freshness নিশ্�
         * **Reverse Index Service** matching results rank করে এবং top ones return করে
     * Titles এবং snippets return করতে **Document Service** ব্যবহার করে
 
-আমরা একটি public [**REST API**](../../bangla.md#representational-state-transfer-rest) ব্যবহার করব:
+আমরা একটি public [**REST API**](https://github.com/Shakil-khan59/system-design-primer-bangla#representational-state-transfer-rest) ব্যবহার করব:
 
 ```
 $ curl https://search.com/api/v1/search?query=hello+world
@@ -250,7 +250,7 @@ Response:
 },
 ```
 
-Internal communications এর জন্য, আমরা [Remote Procedure Calls](../../bangla.md#remote-procedure-call-rpc) ব্যবহার করতে পারি।
+Internal communications এর জন্য, আমরা [Remote Procedure Calls](https://github.com/Shakil-khan59/system-design-primer-bangla#remote-procedure-call-rpc) ব্যবহার করতে পারি।
 
 ## Step 4: Scale the design
 
@@ -266,26 +266,26 @@ Initial design এর সাথে আপনি যে bottlenecks এর মু
 
 আমরা design complete করতে এবং scalability issues address করতে কিছু components পরিচয় করাব। Internal load balancers clutter কমাতে দেখানো হয়নি।
 
-*আলোচনা repeat করা এড়াতে*, main talking points, tradeoffs, এবং alternatives এর জন্য নিম্নলিখিত [system design topics](../../bangla.md#index-of-system-design-topics) দেখুন:
+*আলোচনা repeat করা এড়াতে*, main talking points, tradeoffs, এবং alternatives এর জন্য নিম্নলিখিত [system design topics](https://github.com/Shakil-khan59/system-design-primer-bangla#index-of-system-design-topics) দেখুন:
 
-* [DNS](../../bangla.md#domain-name-system)
-* [Load balancer](../../bangla.md#load-balancer)
-* [Horizontal scaling](../../bangla.md#horizontal-scaling)
-* [Web server (reverse proxy)](../../bangla.md#reverse-proxy-web-server)
-* [API server (application layer)](../../bangla.md#application-layer)
-* [Cache](../../bangla.md#cache)
-* [NoSQL](../../bangla.md#nosql)
-* [Consistency patterns](../../bangla.md#consistency-patterns)
-* [Availability patterns](../../bangla.md#availability-patterns)
+* [DNS](https://github.com/Shakil-khan59/system-design-primer-bangla#domain-name-system)
+* [Load balancer](https://github.com/Shakil-khan59/system-design-primer-bangla#load-balancer)
+* [Horizontal scaling](https://github.com/Shakil-khan59/system-design-primer-bangla#horizontal-scaling)
+* [Web server (reverse proxy)](https://github.com/Shakil-khan59/system-design-primer-bangla#reverse-proxy-web-server)
+* [API server (application layer)](https://github.com/Shakil-khan59/system-design-primer-bangla#application-layer)
+* [Cache](https://github.com/Shakil-khan59/system-design-primer-bangla#cache)
+* [NoSQL](https://github.com/Shakil-khan59/system-design-primer-bangla#nosql)
+* [Consistency patterns](https://github.com/Shakil-khan59/system-design-primer-bangla#consistency-patterns)
+* [Availability patterns](https://github.com/Shakil-khan59/system-design-primer-bangla#availability-patterns)
 
-কিছু searches খুব popular, যখন অন্যরা শুধুমাত্র একবার executed হয়। Popular queries response times কমাতে এবং **Reverse Index Service** এবং **Document Service** overload করা এড়াতে Redis বা Memcached এর মতো একটি **Memory Cache** থেকে serve করা যেতে পারে। **Memory Cache** unevenly distributed traffic এবং traffic spikes handle করতেও উপযোগী। Memory থেকে sequentially 1 MB পড়তে প্রায় 250 microseconds লাগে, যখন SSD থেকে পড়তে 4x এবং disk থেকে পড়তে 80x বেশি সময় লাগে।<sup><a href=../../bangla.md#latency-numbers-every-programmer-should-know>1</a></sup>
+কিছু searches খুব popular, যখন অন্যরা শুধুমাত্র একবার executed হয়। Popular queries response times কমাতে এবং **Reverse Index Service** এবং **Document Service** overload করা এড়াতে Redis বা Memcached এর মতো একটি **Memory Cache** থেকে serve করা যেতে পারে। **Memory Cache** unevenly distributed traffic এবং traffic spikes handle করতেও উপযোগী। Memory থেকে sequentially 1 MB পড়তে প্রায় 250 microseconds লাগে, যখন SSD থেকে পড়তে 4x এবং disk থেকে পড়তে 80x বেশি সময় লাগে।<sup><a href=https://github.com/Shakil-khan59/system-design-primer-bangla#latency-numbers-every-programmer-should-know>1</a></sup>
 
 নিম্নে **Crawling Service** এ আরও কয়েকটি optimizations রয়েছে:
 
 * Data size এবং request load handle করতে, **Reverse Index Service** এবং **Document Service** সম্ভবত sharding এবং federation এর heavy use করতে হবে।
 * DNS lookup একটি bottleneck হতে পারে, **Crawler Service** তার নিজের DNS lookup রাখতে পারে যা periodically refreshed হয়
 * **Crawler Service** একবারে অনেক open connections রাখে performance উন্নত করতে এবং memory usage কমাতে পারে, [connection pooling](https://en.wikipedia.org/wiki/Connection_pool) হিসাবে উল্লেখ করা
-    * [UDP](../../bangla.md#user-datagram-protocol-udp) এ switching performance boost করতে পারে
+    * [UDP](https://github.com/Shakil-khan59/system-design-primer-bangla#user-datagram-protocol-udp) এ switching performance boost করতে পারে
 * Web crawling bandwidth intensive, high throughput sustain করার জন্য যথেষ্ট bandwidth আছে তা নিশ্চিত করুন
 
 ## Additional talking points
@@ -294,61 +294,60 @@ Initial design এর সাথে আপনি যে bottlenecks এর মু
 
 ### SQL scaling patterns
 
-* [Read replicas](../../bangla.md#master-slave-replication)
-* [Federation](../../bangla.md#federation)
-* [Sharding](../../bangla.md#sharding)
-* [Denormalization](../../bangla.md#denormalization)
-* [SQL Tuning](../../bangla.md#sql-tuning)
+* [Read replicas](https://github.com/Shakil-khan59/system-design-primer-bangla#master-slave-replication)
+* [Federation](https://github.com/Shakil-khan59/system-design-primer-bangla#federation)
+* [Sharding](https://github.com/Shakil-khan59/system-design-primer-bangla#sharding)
+* [Denormalization](https://github.com/Shakil-khan59/system-design-primer-bangla#denormalization)
+* [SQL Tuning](https://github.com/Shakil-khan59/system-design-primer-bangla#sql-tuning)
 
 #### NoSQL
 
-* [Key-value store](../../bangla.md#key-value-store)
-* [Document store](../../bangla.md#document-store)
-* [Wide column store](../../bangla.md#wide-column-store)
-* [Graph database](../../bangla.md#graph-database)
-* [SQL vs NoSQL](../../bangla.md#sql-or-nosql)
+* [Key-value store](https://github.com/Shakil-khan59/system-design-primer-bangla#key-value-store)
+* [Document store](https://github.com/Shakil-khan59/system-design-primer-bangla#document-store)
+* [Wide column store](https://github.com/Shakil-khan59/system-design-primer-bangla#wide-column-store)
+* [Graph database](https://github.com/Shakil-khan59/system-design-primer-bangla#graph-database)
+* [SQL vs NoSQL](https://github.com/Shakil-khan59/system-design-primer-bangla#sql-or-nosql)
 
 ### Caching
 
 * কোথায় cache করতে হবে
-    * [Client caching](../../bangla.md#client-caching)
-    * [CDN caching](../../bangla.md#cdn-caching)
-    * [Web server caching](../../bangla.md#web-server-caching)
-    * [Database caching](../../bangla.md#database-caching)
-    * [Application caching](../../bangla.md#application-caching)
+    * [Client caching](https://github.com/Shakil-khan59/system-design-primer-bangla#client-caching)
+    * [CDN caching](https://github.com/Shakil-khan59/system-design-primer-bangla#cdn-caching)
+    * [Web server caching](https://github.com/Shakil-khan59/system-design-primer-bangla#web-server-caching)
+    * [Database caching](https://github.com/Shakil-khan59/system-design-primer-bangla#database-caching)
+    * [Application caching](https://github.com/Shakil-khan59/system-design-primer-bangla#application-caching)
 * কী cache করতে হবে
-    * [Caching at the database query level](../../bangla.md#caching-at-the-database-query-level)
-    * [Caching at the object level](../../bangla.md#caching-at-the-object-level)
+    * [Caching at the database query level](https://github.com/Shakil-khan59/system-design-primer-bangla#caching-at-the-database-query-level)
+    * [Caching at the object level](https://github.com/Shakil-khan59/system-design-primer-bangla#caching-at-the-object-level)
 * কখন cache update করতে হবে
-    * [Cache-aside](../../bangla.md#cache-aside)
-    * [Write-through](../../bangla.md#write-through)
-    * [Write-behind (write-back)](../../bangla.md#write-behind-write-back)
-    * [Refresh ahead](../../bangla.md#refresh-ahead)
+    * [Cache-aside](https://github.com/Shakil-khan59/system-design-primer-bangla#cache-aside)
+    * [Write-through](https://github.com/Shakil-khan59/system-design-primer-bangla#write-through)
+    * [Write-behind (write-back)](https://github.com/Shakil-khan59/system-design-primer-bangla#write-behind-write-back)
+    * [Refresh ahead](https://github.com/Shakil-khan59/system-design-primer-bangla#refresh-ahead)
 
 ### Asynchronism and microservices
 
-* [Message queues](../../bangla.md#message-queues)
-* [Task queues](../../bangla.md#task-queues)
-* [Back pressure](../../bangla.md#back-pressure)
-* [Microservices](../../bangla.md#microservices)
+* [Message queues](https://github.com/Shakil-khan59/system-design-primer-bangla#message-queues)
+* [Task queues](https://github.com/Shakil-khan59/system-design-primer-bangla#task-queues)
+* [Back pressure](https://github.com/Shakil-khan59/system-design-primer-bangla#back-pressure)
+* [Microservices](https://github.com/Shakil-khan59/system-design-primer-bangla#microservices)
 
 ### Communications
 
 * Tradeoffs নিয়ে আলোচনা করুন:
-    * Clients এর সাথে external communication - [HTTP APIs following REST](../../bangla.md#representational-state-transfer-rest)
-    * Internal communications - [RPC](../../bangla.md#remote-procedure-call-rpc)
-* [Service discovery](../../bangla.md#service-discovery)
+    * Clients এর সাথে external communication - [HTTP APIs following REST](https://github.com/Shakil-khan59/system-design-primer-bangla#representational-state-transfer-rest)
+    * Internal communications - [RPC](https://github.com/Shakil-khan59/system-design-primer-bangla#remote-procedure-call-rpc)
+* [Service discovery](https://github.com/Shakil-khan59/system-design-primer-bangla#service-discovery)
 
 ### Security
 
-[security section](../../bangla.md#security) দেখুন।
+[security section](https://github.com/Shakil-khan59/system-design-primer-bangla#security) দেখুন।
 
 ### Latency numbers
 
-[Latency numbers every programmer should know](../../bangla.md#latency-numbers-every-programmer-should-know) দেখুন।
+[Latency numbers every programmer should know](https://github.com/Shakil-khan59/system-design-primer-bangla#latency-numbers-every-programmer-should-know) দেখুন।
 
 ### Ongoing
 
 * Bottlenecks আসার সাথে সাথে address করতে আপনার system benchmark এবং monitor করা চালিয়ে যান
 * Scaling একটি iterative process
-
