@@ -1,6 +1,6 @@
 # Design a system that scales to millions of users on AWS
 
-*নোট: এই document [system design topics](../../bangla.md#index-of-system-design-topics) এ পাওয়া relevant areas এর সাথে সরাসরি link করে duplication এড়াতে। সাধারণ talking points, tradeoffs, এবং alternatives এর জন্য linked content দেখুন।*
+*নোট: এই document [system design topics](https://github.com/Shakil-khan59/system-design-primer-bangla#index-of-system-design-topics) এ পাওয়া relevant areas এর সাথে সরাসরি link করে duplication এড়াতে। সাধারণ talking points, tradeoffs, এবং alternatives এর জন্য linked content দেখুন।*
 
 ## Step 1: Outline use cases and constraints
 
@@ -83,7 +83,7 @@ Handy conversion guide:
 
 * EC2 এ **Web server**
     * User data এর জন্য Storage
-    * [**MySQL Database**](../../bangla.md#relational-database-management-system-rdbms)
+    * [**MySQL Database**](https://github.com/Shakil-khan59/system-design-primer-bangla#relational-database-management-system-rdbms)
 
 **Vertical Scaling** ব্যবহার করুন:
 
@@ -96,7 +96,7 @@ Handy conversion guide:
 
 *Trade-offs, alternatives, এবং additional details:*
 
-* **Vertical Scaling** এর alternative হল [**Horizontal scaling**](../../bangla.md#horizontal-scaling)
+* **Vertical Scaling** এর alternative হল [**Horizontal scaling**](https://github.com/Shakil-khan59/system-design-primer-bangla#horizontal-scaling)
 
 #### Start with SQL, consider NoSQL
 
@@ -104,8 +104,8 @@ Constraints ধরে নেয় relational data এর প্রয়োজ�
 
 *Trade-offs, alternatives, এবং additional details:*
 
-* [Relational database management system (RDBMS)](../../bangla.md#relational-database-management-system-rdbms) section দেখুন
-* [SQL বা NoSQL](../../bangla.md#sql-or-nosql) ব্যবহার করার কারণ নিয়ে আলোচনা করুন
+* [Relational database management system (RDBMS)](https://github.com/Shakil-khan59/system-design-primer-bangla#relational-database-management-system-rdbms) section দেখুন
+* [SQL বা NoSQL](https://github.com/Shakil-khan59/system-design-primer-bangla#sql-or-nosql) ব্যবহার করার কারণ নিয়ে আলোচনা করুন
 
 #### Assign a public static IP
 
@@ -118,7 +118,7 @@ Domain instance এর public IP এ map করতে Route 53 এর মতো 
 
 *Trade-offs, alternatives, এবং additional details:*
 
-* [Domain name system](../../bangla.md#domain-name-system) section দেখুন
+* [Domain name system](https://github.com/Shakil-khan59/system-design-primer-bangla#domain-name-system) section দেখুন
 
 #### Secure the web server
 
@@ -131,7 +131,7 @@ Domain instance এর public IP এ map করতে Route 53 এর মতো 
 
 *Trade-offs, alternatives, এবং additional details:*
 
-* [Security](../../bangla.md#security) section দেখুন
+* [Security](https://github.com/Shakil-khan59/system-design-primer-bangla#security) section দেখুন
 
 ## Step 4: Scale the design
 
@@ -187,7 +187,7 @@ Domain instance এর public IP এ map করতে Route 53 এর মতো 
 
 *Trade-offs, alternatives, এবং additional details:*
 
-* [Security](../../bangla.md#security) section দেখুন
+* [Security](https://github.com/Shakil-khan59/system-design-primer-bangla#security) section দেখুন
 
 ### Users++
 
@@ -201,18 +201,18 @@ Domain instance এর public IP এ map করতে Route 53 এর মতো 
 
 * নিম্নলিখিত goals **Web Server** এর সাথে scaling issues address করার চেষ্টা করে
     * **Benchmarks/Load Tests** এবং **Profiling** এর উপর ভিত্তি করে, আপনার শুধুমাত্র এই techniques এর একটি বা দুটি implement করার প্রয়োজন হতে পারে
-* Increasing loads handle করতে এবং single points of failure address করতে [**Horizontal Scaling**](../../bangla.md#horizontal-scaling) ব্যবহার করুন
-    * Amazon এর ELB বা HAProxy এর মতো একটি [**Load Balancer**](../../bangla.md#load-balancer) যোগ করুন
+* Increasing loads handle করতে এবং single points of failure address করতে [**Horizontal Scaling**](https://github.com/Shakil-khan59/system-design-primer-bangla#horizontal-scaling) ব্যবহার করুন
+    * Amazon এর ELB বা HAProxy এর মতো একটি [**Load Balancer**](https://github.com/Shakil-khan59/system-design-primer-bangla#load-balancer) যোগ করুন
         * ELB highly available
-        * যদি আপনি আপনার নিজের **Load Balancer** configure করছেন, multiple availability zones এ [active-active](../../bangla.md#active-active) বা [active-passive](../../bangla.md#active-passive) এ multiple servers set up করা availability উন্নত করবে
+        * যদি আপনি আপনার নিজের **Load Balancer** configure করছেন, multiple availability zones এ [active-active](https://github.com/Shakil-khan59/system-design-primer-bangla#active-active) বা [active-passive](https://github.com/Shakil-khan59/system-design-primer-bangla#active-passive) এ multiple servers set up করা availability উন্নত করবে
         * Backend servers এ computational load কমাতে এবং certificate administration simplify করতে **Load Balancer** এ SSL terminate করুন
     * Multiple availability zones জুড়ে spread করা multiple **Web Servers** ব্যবহার করুন
-    * Redundancy উন্নত করতে multiple availability zones জুড়ে [**Master-Slave Failover**](../../bangla.md#master-slave-replication) mode এ multiple **MySQL** instances ব্যবহার করুন
-* [**Application Servers**](../../bangla.md#application-layer) থেকে **Web Servers** আলাদা করুন
+    * Redundancy উন্নত করতে multiple availability zones জুড়ে [**Master-Slave Failover**](https://github.com/Shakil-khan59/system-design-primer-bangla#master-slave-replication) mode এ multiple **MySQL** instances ব্যবহার করুন
+* [**Application Servers**](https://github.com/Shakil-khan59/system-design-primer-bangla#application-layer) থেকে **Web Servers** আলাদা করুন
     * উভয় layer independently scale এবং configure করুন
-    * **Web Servers** একটি [**Reverse Proxy**](../../bangla.md#reverse-proxy-web-server) হিসাবে run করতে পারে
+    * **Web Servers** একটি [**Reverse Proxy**](https://github.com/Shakil-khan59/system-design-primer-bangla#reverse-proxy-web-server) হিসাবে run করতে পারে
     * উদাহরণস্বরূপ, আপনি **Read APIs** handle করে এমন **Application Servers** যোগ করতে পারেন যখন অন্যরা **Write APIs** handle করে
-* Load এবং latency কমাতে CloudFront এর মতো একটি [**Content Delivery Network (CDN)**](../../bangla.md#content-delivery-network) এ static (এবং কিছু dynamic) content move করুন
+* Load এবং latency কমাতে CloudFront এর মতো একটি [**Content Delivery Network (CDN)**](https://github.com/Shakil-khan59/system-design-primer-bangla#content-delivery-network) এ static (এবং কিছু dynamic) content move করুন
 
 *Trade-offs, alternatives, এবং additional details:*
 
@@ -232,13 +232,13 @@ Domain instance এর public IP এ map করতে Route 53 এর মতো 
 
 * নিম্নলিখিত goals **MySQL Database** এর সাথে scaling issues address করার চেষ্টা করে
     * **Benchmarks/Load Tests** এবং **Profiling** এর উপর ভিত্তি করে, আপনার শুধুমাত্র এই techniques এর একটি বা দুটি implement করার প্রয়োজন হতে পারে
-* Load এবং latency কমাতে Elasticache এর মতো একটি [**Memory Cache**](../../bangla.md#cache) এ নিম্নলিখিত ডেটা move করুন:
+* Load এবং latency কমাতে Elasticache এর মতো একটি [**Memory Cache**](https://github.com/Shakil-khan59/system-design-primer-bangla#cache) এ নিম্নলিখিত ডেটা move করুন:
     * **MySQL** থেকে frequently accessed content
         * প্রথমে, একটি **Memory Cache** implement করার আগে **MySQL Database** cache configure করার চেষ্টা করুন যদি bottleneck relieve করার জন্য এটি sufficient হয়
     * **Web Servers** থেকে Session data
         * **Web Servers** stateless হয়ে যায়, **Autoscaling** অনুমোদন করে
-    * Memory থেকে sequentially 1 MB পড়তে প্রায় 250 microseconds লাগে, যখন SSD থেকে পড়তে 4x এবং disk থেকে পড়তে 80x বেশি সময় লাগে।<sup><a href=../../bangla.md#latency-numbers-every-programmer-should-know>1</a></sup>
-* Write master এ load কমাতে [**MySQL Read Replicas**](../../bangla.md#master-slave-replication) যোগ করুন
+    * Memory থেকে sequentially 1 MB পড়তে প্রায় 250 microseconds লাগে, যখন SSD থেকে পড়তে 4x এবং disk থেকে পড়তে 80x বেশি সময় লাগে।<sup><a href=https://github.com/Shakil-khan59/system-design-primer-bangla#latency-numbers-every-programmer-should-know>1</a></sup>
+* Write master এ load কমাতে [**MySQL Read Replicas**](https://github.com/Shakil-khan59/system-design-primer-bangla#master-slave-replication) যোগ করুন
 * Responsiveness উন্নত করতে আরও **Web Servers** এবং **Application Servers** যোগ করুন
 
 *Trade-offs, alternatives, এবং additional details:*
@@ -254,7 +254,7 @@ Domain instance এর public IP এ map করতে Route 53 এর মতো 
 
 *Trade-offs, alternatives, এবং additional details:*
 
-* [Relational database management system (RDBMS)](../../bangla.md#relational-database-management-system-rdbms) section দেখুন
+* [Relational database management system (RDBMS)](https://github.com/Shakil-khan59/system-design-primer-bangla#relational-database-management-system-rdbms) section দেখুন
 
 ### Users++++
 
@@ -317,14 +317,14 @@ Service constraints এ outlined figures এর দিকে continue growing �
 
 SQL scaling patterns এর মধ্যে রয়েছে:
 
-* [Federation](../../bangla.md#federation)
-* [Sharding](../../bangla.md#sharding)
-* [Denormalization](../../bangla.md#denormalization)
-* [SQL Tuning](../../bangla.md#sql-tuning)
+* [Federation](https://github.com/Shakil-khan59/system-design-primer-bangla#federation)
+* [Sharding](https://github.com/Shakil-khan59/system-design-primer-bangla#sharding)
+* [Denormalization](https://github.com/Shakil-khan59/system-design-primer-bangla#denormalization)
+* [SQL Tuning](https://github.com/Shakil-khan59/system-design-primer-bangla#sql-tuning)
 
-High read এবং write requests আরও address করতে, আমাদের appropriate ডেটা DynamoDB এর মতো একটি [**NoSQL Database**](../../bangla.md#nosql) এ move করারও বিবেচনা করা উচিত।
+High read এবং write requests আরও address করতে, আমাদের appropriate ডেটা DynamoDB এর মতো একটি [**NoSQL Database**](https://github.com/Shakil-khan59/system-design-primer-bangla#nosql) এ move করারও বিবেচনা করা উচিত।
 
-আমরা independent scaling অনুমোদন করতে আমাদের [**Application Servers**](../../bangla.md#application-layer) আরও আলাদা করতে পারি। Batch processes বা computations যা real-time এ করা প্রয়োজন নেই তা **Queues** এবং **Workers** সহ [**Asynchronously**](../../bangla.md#asynchronism) করা যেতে পারে:
+আমরা independent scaling অনুমোদন করতে আমাদের [**Application Servers**](https://github.com/Shakil-khan59/system-design-primer-bangla#application-layer) আরও আলাদা করতে পারি। Batch processes বা computations যা real-time এ করা প্রয়োজন নেই তা **Queues** এবং **Workers** সহ [**Asynchronously**](https://github.com/Shakil-khan59/system-design-primer-bangla#asynchronism) করা যেতে পারে:
 
 * উদাহরণস্বরূপ, একটি photo service এ, photo upload এবং thumbnail creation আলাদা করা যেতে পারে:
     * **Client** photo upload করে
@@ -344,61 +344,60 @@ High read এবং write requests আরও address করতে, আমাদ�
 
 ### SQL scaling patterns
 
-* [Read replicas](../../bangla.md#master-slave-replication)
-* [Federation](../../bangla.md#federation)
-* [Sharding](../../bangla.md#sharding)
-* [Denormalization](../../bangla.md#denormalization)
-* [SQL Tuning](../../bangla.md#sql-tuning)
+* [Read replicas](https://github.com/Shakil-khan59/system-design-primer-bangla#master-slave-replication)
+* [Federation](https://github.com/Shakil-khan59/system-design-primer-bangla#federation)
+* [Sharding](https://github.com/Shakil-khan59/system-design-primer-bangla#sharding)
+* [Denormalization](https://github.com/Shakil-khan59/system-design-primer-bangla#denormalization)
+* [SQL Tuning](https://github.com/Shakil-khan59/system-design-primer-bangla#sql-tuning)
 
 #### NoSQL
 
-* [Key-value store](../../bangla.md#key-value-store)
-* [Document store](../../bangla.md#document-store)
-* [Wide column store](../../bangla.md#wide-column-store)
-* [Graph database](../../bangla.md#graph-database)
-* [SQL vs NoSQL](../../bangla.md#sql-or-nosql)
+* [Key-value store](https://github.com/Shakil-khan59/system-design-primer-bangla#key-value-store)
+* [Document store](https://github.com/Shakil-khan59/system-design-primer-bangla#document-store)
+* [Wide column store](https://github.com/Shakil-khan59/system-design-primer-bangla#wide-column-store)
+* [Graph database](https://github.com/Shakil-khan59/system-design-primer-bangla#graph-database)
+* [SQL vs NoSQL](https://github.com/Shakil-khan59/system-design-primer-bangla#sql-or-nosql)
 
 ### Caching
 
 * কোথায় cache করতে হবে
-    * [Client caching](../../bangla.md#client-caching)
-    * [CDN caching](../../bangla.md#cdn-caching)
-    * [Web server caching](../../bangla.md#web-server-caching)
-    * [Database caching](../../bangla.md#database-caching)
-    * [Application caching](../../bangla.md#application-caching)
+    * [Client caching](https://github.com/Shakil-khan59/system-design-primer-bangla#client-caching)
+    * [CDN caching](https://github.com/Shakil-khan59/system-design-primer-bangla#cdn-caching)
+    * [Web server caching](https://github.com/Shakil-khan59/system-design-primer-bangla#web-server-caching)
+    * [Database caching](https://github.com/Shakil-khan59/system-design-primer-bangla#database-caching)
+    * [Application caching](https://github.com/Shakil-khan59/system-design-primer-bangla#application-caching)
 * কী cache করতে হবে
-    * [Caching at the database query level](../../bangla.md#caching-at-the-database-query-level)
-    * [Caching at the object level](../../bangla.md#caching-at-the-object-level)
+    * [Caching at the database query level](https://github.com/Shakil-khan59/system-design-primer-bangla#caching-at-the-database-query-level)
+    * [Caching at the object level](https://github.com/Shakil-khan59/system-design-primer-bangla#caching-at-the-object-level)
 * কখন cache update করতে হবে
-    * [Cache-aside](../../bangla.md#cache-aside)
-    * [Write-through](../../bangla.md#write-through)
-    * [Write-behind (write-back)](../../bangla.md#write-behind-write-back)
-    * [Refresh ahead](../../bangla.md#refresh-ahead)
+    * [Cache-aside](https://github.com/Shakil-khan59/system-design-primer-bangla#cache-aside)
+    * [Write-through](https://github.com/Shakil-khan59/system-design-primer-bangla#write-through)
+    * [Write-behind (write-back)](https://github.com/Shakil-khan59/system-design-primer-bangla#write-behind-write-back)
+    * [Refresh ahead](https://github.com/Shakil-khan59/system-design-primer-bangla#refresh-ahead)
 
 ### Asynchronism and microservices
 
-* [Message queues](../../bangla.md#message-queues)
-* [Task queues](../../bangla.md#task-queues)
-* [Back pressure](../../bangla.md#back-pressure)
-* [Microservices](../../bangla.md#microservices)
+* [Message queues](https://github.com/Shakil-khan59/system-design-primer-bangla#message-queues)
+* [Task queues](https://github.com/Shakil-khan59/system-design-primer-bangla#task-queues)
+* [Back pressure](https://github.com/Shakil-khan59/system-design-primer-bangla#back-pressure)
+* [Microservices](https://github.com/Shakil-khan59/system-design-primer-bangla#microservices)
 
 ### Communications
 
 * Tradeoffs নিয়ে আলোচনা করুন:
-    * Clients এর সাথে external communication - [HTTP APIs following REST](../../bangla.md#representational-state-transfer-rest)
-    * Internal communications - [RPC](../../bangla.md#remote-procedure-call-rpc)
-* [Service discovery](../../bangla.md#service-discovery)
+    * Clients এর সাথে external communication - [HTTP APIs following REST](https://github.com/Shakil-khan59/system-design-primer-bangla#representational-state-transfer-rest)
+    * Internal communications - [RPC](https://github.com/Shakil-khan59/system-design-primer-bangla#remote-procedure-call-rpc)
+* [Service discovery](https://github.com/Shakil-khan59/system-design-primer-bangla#service-discovery)
 
 ### Security
 
-[security section](../../bangla.md#security) দেখুন।
+[security section](https://github.com/Shakil-khan59/system-design-primer-bangla#security) দেখুন।
 
 ### Latency numbers
 
-[Latency numbers every programmer should know](../../bangla.md#latency-numbers-every-programmer-should-know) দেখুন।
+[Latency numbers every programmer should know](https://github.com/Shakil-khan59/system-design-primer-bangla#latency-numbers-every-programmer-should-know) দেখুন।
 
 ### Ongoing
 
 * Bottlenecks আসার সাথে সাথে address করতে আপনার system benchmark এবং monitor করা চালিয়ে যান
 * Scaling একটি iterative process
-
