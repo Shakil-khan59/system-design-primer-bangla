@@ -1,78 +1,77 @@
-Contributing
+অবদান
 ============
 
-Contributions are welcome!
+অবদান স্বাগত!
 
-**Please carefully read this page to make the code review process go as smoothly as possible and to maximize the likelihood of your contribution being merged.**
+**কোড review প্রক্রিয়া যতটা সম্ভব smooth করতে এবং আপনার অবদান merge হওয়ার সম্ভাবনা maximize করতে অনুগ্রহ করে এই page টি carefully পড়ুন।**
 
 ## Bug Reports
 
-For bug reports or requests [submit an issue](https://github.com/donnemartin/system-design-primer/issues).
+Bug reports বা requests এর জন্য [একটি issue submit করুন](https://github.com/donnemartin/system-design-primer/issues)।
 
 ## Pull Requests
 
-The preferred way to contribute is to fork the
-[main repository](https://github.com/donnemartin/system-design-primer) on GitHub.
+অবদান করার preferred way হল GitHub এ [main repository](https://github.com/donnemartin/system-design-primer) fork করা।
 
-1. Fork the [main repository](https://github.com/donnemartin/system-design-primer).  Click on the 'Fork' button near the top of the page.  This creates a copy of the code under your account on the GitHub server.
+1. [main repository](https://github.com/donnemartin/system-design-primer) fork করুন। Page এর top এর কাছে 'Fork' button এ click করুন। এটি GitHub server এ আপনার account এর অধীনে code এর একটি copy তৈরি করে।
 
-2. Clone this copy to your local disk:
+2. এই copy টি আপনার local disk এ clone করুন:
 
         $ git clone git@github.com:YourLogin/system-design-primer.git
         $ cd system-design-primer
 
-3. Create a branch to hold your changes and start making changes. Don't work in the `master` branch!
+3. আপনার changes hold করার জন্য একটি branch তৈরি করুন এবং changes করা শুরু করুন। `master` branch এ কাজ করবেন না!
 
         $ git checkout -b my-feature
 
-4. Work on this copy on your computer using Git to do the version control. When you're done editing, run the following to record your changes in Git:
+4. Version control করতে Git ব্যবহার করে আপনার computer এ এই copy এ কাজ করুন। আপনি editing শেষ হলে, Git এ আপনার changes record করতে নিম্নলিখিত run করুন:
 
         $ git add modified_files
         $ git commit
 
-5. Push your changes to GitHub with:
+5. GitHub এ আপনার changes push করুন:
 
         $ git push -u origin my-feature
 
-6. Finally, go to the web page of your fork of the `system-design-primer` repo and click 'Pull Request' to send your changes for review.
+6. অবশেষে, `system-design-primer` repo এর আপনার fork এর web page এ যান এবং review এর জন্য আপনার changes পাঠাতে 'Pull Request' click করুন।
 
 ### GitHub Pull Requests Docs
 
-If you are not familiar with pull requests, review the [pull request docs](https://help.github.com/articles/using-pull-requests/).
+যদি আপনি pull requests এর সাথে familiar না হন, [pull request docs](https://help.github.com/articles/using-pull-requests/) review করুন।
 
 ## Translations
 
-We'd like for the guide to be available in many languages. Here is the process for maintaining translations:
+আমরা চাই guide অনেক languages এ available থাকুক। Translations maintain করার প্রক্রিয়া এখানে:
 
-* This original version and content of the guide is maintained in English.
-* Translations follow the content of the original. Contributors must speak at least some English, so that translations do not diverge.
-* Each translation has a maintainer to update the translation as the original evolves and to review others' changes. This doesn't require a lot of time, but a review by the maintainer is important to maintain quality.
+* Guide এর এই original version এবং content English এ maintained হয়।
+* Translations original এর content follow করে। Contributors এর অন্তত কিছু English বলতে হবে, যাতে translations diverge না করে।
+* প্রতিটি translation এর একটি maintainer থাকে original evolve হওয়ার সাথে translation update করতে এবং অন্যরা changes review করতে। এটি অনেক সময় প্রয়োজন করে না, কিন্তু maintainer দ্বারা একটি review quality maintain করার জন্য গুরুত্বপূর্ণ।
 
-See [Translations](TRANSLATIONS.md).
+[Translations](TRANSLATIONS.md) দেখুন।
 
 ### Changes to translations
 
-* Changes to content should be made to the English version first, and then translated to each other language.
-* Changes that improve translations should be made directly on the file for that language. Pull requests should only modify one language at a time.
-* Submit a pull request with changes to the file in that language. Each language has a maintainer, who reviews changes in that language. Then the primary maintainer [@donnemartin](https://github.com/donnemartin) merges it in.
-* Prefix pull requests and issues with language codes if they are for that translation only, e.g. "es: Improve grammar", so maintainers can find them easily.
-* Tag the translation maintainer for a code review, see the list of [translation maintainers](TRANSLATIONS.md).
-    * You will need to get a review from a native speaker (preferably the language maintainer) before your pull request is merged.
+* Content এ changes প্রথমে English version এ করা উচিত, এবং তারপর প্রতিটি other language এ translate করা উচিত।
+* Translations improve করে এমন changes সরাসরি সেই language এর file এ করা উচিত। Pull requests শুধুমাত্র একবারে একটি language modify করা উচিত।
+* সেই language এর file এ changes সহ একটি pull request submit করুন। প্রতিটি language এর একটি maintainer থাকে, যিনি সেই language এ changes review করেন। তারপর primary maintainer [@donnemartin](https://github.com/donnemartin) এটি merge করে।
+* Pull requests এবং issues language codes দিয়ে prefix করুন যদি তারা শুধুমাত্র সেই translation এর জন্য হয়, উদাহরণস্বরূপ "es: Improve grammar", যাতে maintainers সহজে খুঁজে পেতে পারে।
+* Code review এর জন্য translation maintainer tag করুন, [translation maintainers](TRANSLATIONS.md) এর list দেখুন।
+    * আপনার pull request merge হওয়ার আগে আপনার একটি native speaker (preferably language maintainer) থেকে একটি review পাওয়া প্রয়োজন হবে।
 
 ### Adding translations to new languages
 
-Translations to new languages are always welcome! Keep in mind a translation must be maintained.
+নতুন languages এ translations সবসময় স্বাগত! মনে রাখবেন একটি translation maintain করা আবশ্যক।
 
-* Do you have time to be a maintainer for a new language? Please see the list of [translations](TRANSLATIONS.md) and tell us so we know we can count on you in the future.
-* Check the [translations](TRANSLATIONS.md), issues, and pull requests to see if a translation is in progress or stalled. If it's in progress, offer to help.  If it's stalled, consider becoming the maintainer if you can commit to it.
-* If a translation has not yet been started, file an issue for your language so people know you are working on it and we'll coordinate. Confirm you are native level in the language and are willing to maintain the translation, so it's not orphaned.
-* To get started, fork the repo, then submit a pull request to the main repo with the single file README-xx.md added, where xx is the language code. Use standard [IETF language tags](https://www.w3.org/International/articles/language-tags/), i.e. the same as is used by Wikipedia, *not* the code for a single country. These are usually just the two-letter lowercase code, for example, `fr` for French and `uk` for Ukrainian (not `ua`, which is for the country). For languages that have variations, use the shortest tag, such as `zh-Hant`.
-* Feel free to invite friends to help your original translation by having them fork your repo, then merging their pull requests to your forked repo. Translations are difficult and usually have errors that others need to find.
-* Add links to your translation at the top of every README-XX.md file. For consistency, the link should be added in alphabetical order by ISO code, and the anchor text should be in the native language.
-* When you've fully translated the English README.md, comment on the pull request in the main repo that it's ready to be merged.
-    * You'll need to have a complete and reviewed translation of the English README.md before your translation will be merged into the `master` branch.
-    * Once accepted, your pull request will be squashed into a single commit into the `master` branch.
+* আপনার একটি নতুন language এর maintainer হওয়ার সময় আছে? অনুগ্রহ করে [translations](TRANSLATIONS.md) এর list দেখুন এবং আমাদের জানান যাতে আমরা জানতে পারি আমরা future এ আপনার উপর count করতে পারি।
+* [translations](TRANSLATIONS.md), issues, এবং pull requests check করুন একটি translation progress এ আছে বা stalled আছে কিনা দেখতে। যদি এটি progress এ থাকে, সাহায্য করার offer করুন। যদি এটি stalled থাকে, আপনি commit করতে পারলে maintainer হওয়ার বিবেচনা করুন।
+* যদি একটি translation এখনও শুরু না হয়ে থাকে, আপনার language এর জন্য একটি issue file করুন যাতে people জানতে পারে আপনি এটি নিয়ে কাজ করছেন এবং আমরা coordinate করব। নিশ্চিত করুন আপনি language এ native level এবং translation maintain করতে ইচ্ছুক, যাতে এটি orphaned না হয়।
+* শুরু করতে, repo fork করুন, তারপর main repo এ একটি pull request submit করুন single file README-xx.md যোগ করা সহ, যেখানে xx হল language code। Standard [IETF language tags](https://www.w3.org/International/articles/language-tags/) ব্যবহার করুন, অর্থাৎ Wikipedia দ্বারা ব্যবহৃত একই, *না* একটি single country এর code। এগুলি সাধারণত শুধুমাত্র two-letter lowercase code, উদাহরণস্বরূপ, French এর জন্য `fr` এবং Ukrainian এর জন্য `uk` (না `ua`, যা country এর জন্য)। Variations আছে এমন languages এর জন্য, shortest tag ব্যবহার করুন, যেমন `zh-Hant`।
+* আপনার friends কে invite করতে feel free করুন আপনার original translation সাহায্য করতে তাদের repo fork করার মাধ্যমে, তারপর তাদের pull requests আপনার forked repo এ merge করার মাধ্যমে। Translations difficult এবং সাধারণত errors থাকে যা others খুঁজে বের করতে হবে।
+* প্রতিটি README-XX.md file এর top এ আপনার translation এর links যোগ করুন। Consistency এর জন্য, link ISO code দ্বারা alphabetical order এ যোগ করা উচিত, এবং anchor text native language এ হওয়া উচিত।
+* যখন আপনি English README.md fully translate করেছেন, main repo এ pull request এ comment করুন এটি merge করার জন্য ready।
+    * আপনার translation `master` branch এ merge হওয়ার আগে আপনার English README.md এর একটি complete এবং reviewed translation থাকা প্রয়োজন হবে।
+    * একবার accepted হলে, আপনার pull request `master` branch এ একটি single commit এ squashed হবে।
 
 ### Translation template credits
 
-Thanks to [The Art of Command Line](https://github.com/jlevy/the-art-of-command-line) for the translation template.
+Translation template এর জন্য [The Art of Command Line](https://github.com/jlevy/the-art-of-command-line) কে ধন্যবাদ।
