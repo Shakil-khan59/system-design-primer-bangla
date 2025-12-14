@@ -1,6 +1,6 @@
 # Design Pastebin.com (or Bit.ly)
 
-*নোট: এই document [system design topics](../../bangla.md#index-of-system-design-topics) এ পাওয়া relevant areas এর সাথে সরাসরি link করে duplication এড়াতে। সাধারণ talking points, tradeoffs, এবং alternatives এর জন্য linked content দেখুন।*
+*নোট: এই document [system design topics](https://github.com/Shakil-khan59/system-design-primer-bangla#index-of-system-design-topics) এ পাওয়া relevant areas এর সাথে সরাসরি link করে duplication এড়াতে। সাধারণ talking points, tradeoffs, এবং alternatives এর জন্য linked content দেখুন।*
 
 **Design Bit.ly** - একটি অনুরূপ প্রশ্ন, তবে pastebin original unshortened url এর পরিবর্তে paste contents সংরক্ষণ করতে প্রয়োজন।
 
@@ -31,8 +31,8 @@ Clarifying questions address করার জন্য interviewer ছাড়�
 
 * **User** একটি account এর জন্য register করে
     * **User** email verify করে
-* **User** একটি registered account এ log in করে
-    * **User** document edit করে
+    * **User** একটি registered account এ log in করে
+* **User** document edit করে
 * **User** visibility set করতে পারে
 * **User** shortlink set করতে পারে
 
@@ -61,9 +61,10 @@ Clarifying questions address করার জন্য interviewer ছাড়�
     * `paste_path` - 255 bytes
     * total = ~1.27 KB
 * প্রতি মাসে 12.7 GB নতুন paste content
-    * প্রতি paste 1.27 KB * প্রতি মাসে 10 million pastes
-    * 3 বছরে ~450 GB নতুন paste content
-    * 3 বছরে 360 million shortlinks
+    * প্রতি paste 1.27 KB
+    * প্রতি মাসে 10 million pastes
+* 3 বছরে ~450 GB নতুন paste content
+* 3 বছরে 360 million shortlinks
     * ধরে নিন বেশিরভাগ existing ones এ updates এর পরিবর্তে নতুন pastes
 * গড়ে প্রতি সেকেন্ডে 4 paste writes
 * গড়ে প্রতি সেকেন্ডে 40 read requests
@@ -87,19 +88,19 @@ Handy conversion guide:
 
 ### Use case: User enters a block of text and gets a randomly generated link
 
-আমরা একটি [relational database](../../bangla.md#relational-database-management-system-rdbms) একটি large hash table হিসাবে ব্যবহার করতে পারি, generated url কে paste file ধারণকারী file server এবং path এ mapping করে।
+আমরা একটি [relational database](https://github.com/Shakil-khan59/system-design-primer-bangla#relational-database-management-system-rdbms) একটি large hash table হিসাবে ব্যবহার করতে পারি, generated url কে paste file ধারণকারী file server এবং path এ mapping করে।
 
-একটি file server manage করার পরিবর্তে, আমরা Amazon S3 এর মতো একটি managed **Object Store** বা একটি [NoSQL document store](../../bangla.md#document-store) ব্যবহার করতে পারি।
+একটি file server manage করার পরিবর্তে, আমরা Amazon S3 এর মতো একটি managed **Object Store** বা একটি [NoSQL document store](https://github.com/Shakil-khan59/system-design-primer-bangla#document-store) ব্যবহার করতে পারি।
 
-একটি relational database একটি large hash table হিসাবে কাজ করার একটি alternative, আমরা একটি [NoSQL key-value store](../../bangla.md#key-value-store) ব্যবহার করতে পারি। আমাদের [SQL বা NoSQL বেছে নেওয়ার tradeoffs](../../bangla.md#sql-or-nosql) নিয়ে আলোচনা করা উচিত। নিম্নলিখিত আলোচনা relational database approach ব্যবহার করে।
+একটি relational database একটি large hash table হিসাবে কাজ করার একটি alternative, আমরা একটি [NoSQL key-value store](https://github.com/Shakil-khan59/system-design-primer-bangla#key-value-store) ব্যবহার করতে পারি। আমাদের [SQL বা NoSQL বেছে নেওয়ার tradeoffs](https://github.com/Shakil-khan59/system-design-primer-bangla#sql-or-nosql) নিয়ে আলোচনা করা উচিত। নিম্নলিখিত আলোচনা relational database approach ব্যবহার করে।
 
-* **Client** **Web Server** এ একটি create paste request পাঠায়, একটি [reverse proxy](../../bangla.md#reverse-proxy-web-server) হিসাবে চলছে
+* **Client** **Web Server** এ একটি create paste request পাঠায়, একটি [reverse proxy](https://github.com/Shakil-khan59/system-design-primer-bangla#reverse-proxy-web-server) হিসাবে চলছে
 * **Web Server** request **Write API** server এ forward করে
 * **Write API** server নিম্নলিখিত কাজগুলো করে:
     * একটি unique url generate করে
-        * **SQL Database** এ duplicate খুঁজে url unique কিনা check করে
-        * যদি url unique না হয়, এটি another url generate করে
-        * যদি আমরা একটি custom url support করি, আমরা user-supplied ব্যবহার করতে পারি (এছাড়াও duplicate check করুন)
+    * **SQL Database** এ duplicate খুঁজে url unique কিনা check করে
+    * যদি url unique না হয়, এটি another url generate করে
+    * যদি আমরা একটি custom url support করি, আমরা user-supplied ব্যবহার করতে পারি (এছাড়াও duplicate check করুন)
     * **SQL Database** `pastes` table এ save করে
     * **Object Store** এ paste data save করে
     * url ফেরত দেয়
@@ -116,7 +117,7 @@ paste_path varchar(255) NOT NULL
 PRIMARY KEY(shortlink)
 ```
 
-Primary key `shortlink` column এর উপর ভিত্তি করে set করা একটি [index](../../bangla.md#use-good-indices) তৈরি করে যা database uniqueness enforce করতে ব্যবহার করে। আমরা `created_at` এ একটি additional index তৈরি করব lookups দ্রুত করতে (entire table scan করার পরিবর্তে log-time) এবং ডেটা memory এ রাখতে। Memory থেকে sequentially 1 MB পড়তে প্রায় 250 microseconds লাগে, যখন SSD থেকে পড়তে 4x এবং disk থেকে পড়তে 80x বেশি সময় লাগে।<sup><a href=../../bangla.md#latency-numbers-every-programmer-should-know>1</a></sup>
+Primary key `shortlink` column এর উপর ভিত্তি করে set করা একটি [index](https://github.com/Shakil-khan59/system-design-primer-bangla#use-good-indices) তৈরি করে যা database uniqueness enforce করতে ব্যবহার করে। আমরা `created_at` এ একটি additional index তৈরি করব lookups দ্রুত করতে (entire table scan করার পরিবর্তে log-time) এবং ডেটা memory এ রাখতে। Memory থেকে sequentially 1 MB পড়তে প্রায় 250 microseconds লাগে, যখন SSD থেকে পড়তে 4x এবং disk থেকে পড়তে 80x বেশি সময় লাগে।1
 
 Unique url generate করতে, আমরা করতে পারি:
 
@@ -134,9 +135,9 @@ Unique url generate করতে, আমরা করতে পারি:
 def base_encode(num, base=62):
     digits = []
     while num > 0
-      remainder = modulo(num, base)
-      digits.push(remainder)
-      num = divide(num, base)
+        remainder = modulo(num, base)
+        digits.push(remainder)
+        num = divide(num, base)
     digits = digits.reverse
 ```
 
@@ -146,11 +147,11 @@ def base_encode(num, base=62):
 url = base_encode(md5(ip_address+timestamp))[:URL_LENGTH]
 ```
 
-আমরা একটি public [**REST API**](../../bangla.md#representational-state-transfer-rest) ব্যবহার করব:
+আমরা একটি public [**REST API**](https://github.com/Shakil-khan59/system-design-primer-bangla#representational-state-transfer-rest) ব্যবহার করব:
 
 ```
 $ curl -X POST --data '{ "expiration_length_in_minutes": "60", \
-    "paste_contents": "Hello World!" }' https://pastebin.com/api/v1/paste
+"paste_contents": "Hello World!" }' https://pastebin.com/api/v1/paste
 ```
 
 Response:
@@ -161,7 +162,7 @@ Response:
 }
 ```
 
-Internal communications এর জন্য, আমরা [Remote Procedure Calls](../../bangla.md#remote-procedure-call-rpc) ব্যবহার করতে পারি।
+Internal communications এর জন্য, আমরা [Remote Procedure Calls](https://github.com/Shakil-khan59/system-design-primer-bangla#remote-procedure-call-rpc) ব্যবহার করতে পারি।
 
 ### Use case: User enters a paste's url and views the contents
 
@@ -169,8 +170,8 @@ Internal communications এর জন্য, আমরা [Remote Procedure Call
 * **Web Server** request **Read API** server এ forward করে
 * **Read API** server নিম্নলিখিত কাজগুলো করে:
     * Generated url এর জন্য **SQL Database** check করে
-        * যদি url **SQL Database** এ থাকে, **Object Store** থেকে paste contents fetch করে
-        * অন্যথায়, user এর জন্য একটি error message ফেরত দেয়
+    * যদি url **SQL Database** এ থাকে, **Object Store** থেকে paste contents fetch করে
+    * অন্যথায়, user এর জন্য একটি error message ফেরত দেয়
 
 REST API:
 
@@ -245,7 +246,7 @@ Initial design এর সাথে আপনি যে bottlenecks এর মু
 
 আমরা design complete করতে এবং scalability issues address করতে কিছু components পরিচয় করাব। Internal load balancers clutter কমাতে দেখানো হয়নি।
 
-*আলোচনা repeat করা এড়াতে*, main talking points, tradeoffs, এবং alternatives এর জন্য নিম্নলিখিত [system design topics](../../bangla.md#index-of-system-design-topics) দেখুন:
+*আলোচনা repeat করা এড়াতে*, main talking points, tradeoffs, এবং alternatives এর জন্য নিম্নলিখিত [system design topics](https://github.com/Shakil-khan59/system-design-primer-bangla#index-of-system-design-topics) দেখুন:
 
 * [DNS](https://github.com/Shakil-khan59/system-design-primer-bangla#domain-name-system)
 * [CDN](https://github.com/Shakil-khan59/system-design-primer-bangla#content-delivery-network)
@@ -260,7 +261,6 @@ Initial design এর সাথে আপনি যে bottlenecks এর মু
 * [Consistency patterns](https://github.com/Shakil-khan59/system-design-primer-bangla#consistency-patterns)
 * [Availability patterns](https://github.com/Shakil-khan59/system-design-primer-bangla#availability-patterns)
 
-
 **Analytics Database** Amazon Redshift বা Google BigQuery এর মতো একটি data warehousing solution ব্যবহার করতে পারে।
 
 Amazon S3 এর মতো একটি **Object Store** প্রতি মাসে 12.7 GB নতুন content এর constraint comfortably handle করতে পারে।
@@ -269,10 +269,10 @@ Amazon S3 এর মতো একটি **Object Store** প্রতি মা�
 
 4 *average* paste writes per second (peak এ higher) একটি single **SQL Write Master-Slave** এর জন্য do-able হওয়া উচিত। অন্যথায়, আমাদের additional SQL scaling patterns employ করতে হবে:
 
-* [Federation](../../bangla.md#federation)
-* [Sharding](../../bangla.md#sharding)
-* [Denormalization](../../bangla.md#denormalization)
-* [SQL Tuning](../../bangla.md#sql-tuning)
+* [Federation](https://github.com/Shakil-khan59/system-design-primer-bangla#federation)
+* [Sharding](https://github.com/Shakil-khan59/system-design-primer-bangla#sharding)
+* [Denormalization](https://github.com/Shakil-khan59/system-design-primer-bangla#denormalization)
+* [SQL Tuning](https://github.com/Shakil-khan59/system-design-primer-bangla#sql-tuning)
 
 আমাদের কিছু ডেটা একটি **NoSQL Database** এ move করারও বিবেচনা করা উচিত।
 
@@ -282,56 +282,52 @@ Amazon S3 এর মতো একটি **Object Store** প্রতি মা�
 
 #### NoSQL
 
-* [Key-value store](../../bangla.md#key-value-store)
-* [Document store](../../bangla.md#document-store)
-* [Wide column store](../../bangla.md#wide-column-store)
-* [Graph database](../../bangla.md#graph-database)
-* [SQL vs NoSQL](../../bangla.md#sql-or-nosql)
+* [Key-value store](https://github.com/Shakil-khan59/system-design-primer-bangla#key-value-store)
+* [Document store](https://github.com/Shakil-khan59/system-design-primer-bangla#document-store)
+* [Wide column store](https://github.com/Shakil-khan59/system-design-primer-bangla#wide-column-store)
+* [Graph database](https://github.com/Shakil-khan59/system-design-primer-bangla#graph-database)
+* [SQL vs NoSQL](https://github.com/Shakil-khan59/system-design-primer-bangla#sql-or-nosql)
 
 ### Caching
 
 * কোথায় cache করতে হবে
-    * [Client caching](../../bangla.md#client-caching)
-    * [CDN caching](../../bangla.md#cdn-caching)
-    * [Web server caching](../../bangla.md#web-server-caching)
-    * [Database caching](../../bangla.md#database-caching)
-    * [Application caching](../../bangla.md#application-caching)
+    * [Client caching](https://github.com/Shakil-khan59/system-design-primer-bangla#client-caching)
+    * [CDN caching](https://github.com/Shakil-khan59/system-design-primer-bangla#cdn-caching)
+    * [Web server caching](https://github.com/Shakil-khan59/system-design-primer-bangla#web-server-caching)
+    * [Database caching](https://github.com/Shakil-khan59/system-design-primer-bangla#database-caching)
+    * [Application caching](https://github.com/Shakil-khan59/system-design-primer-bangla#application-caching)
 * কী cache করতে হবে
-    * [Caching at the database query level](../../bangla.md#caching-at-the-database-query-level)
-    * [Caching at the object level](../../bangla.md#caching-at-the-object-level)
+    * [Caching at the database query level](https://github.com/Shakil-khan59/system-design-primer-bangla#caching-at-the-database-query-level)
+    * [Caching at the object level](https://github.com/Shakil-khan59/system-design-primer-bangla#caching-at-the-object-level)
 * কখন cache update করতে হবে
-    * [Cache-aside](../../bangla.md#cache-aside)
-    * [Write-through](../../bangla.md#write-through)
-    * [Write-behind (write-back)](../../bangla.md#write-behind-write-back)
-    * [Refresh ahead](../../bangla.md#refresh-ahead)
+    * [Cache-aside](https://github.com/Shakil-khan59/system-design-primer-bangla#cache-aside)
+    * [Write-through](https://github.com/Shakil-khan59/system-design-primer-bangla#write-through)
+    * [Write-behind (write-back)](https://github.com/Shakil-khan59/system-design-primer-bangla#write-behind-write-back)
+    * [Refresh ahead](https://github.com/Shakil-khan59/system-design-primer-bangla#refresh-ahead)
 
 ### Asynchronism and microservices
 
-* [Message queues](../../bangla.md#message-queues)
-* [Task queues](../../bangla.md#task-queues)
-* [Back pressure](../../bangla.md#back-pressure)
-* [Microservices](../../bangla.md#microservices)
+* [Message queues](https://github.com/Shakil-khan59/system-design-primer-bangla#message-queues)
+* [Task queues](https://github.com/Shakil-khan59/system-design-primer-bangla#task-queues)
+* [Back pressure](https://github.com/Shakil-khan59/system-design-primer-bangla#back-pressure)
+* [Microservices](https://github.com/Shakil-khan59/system-design-primer-bangla#microservices)
 
 ### Communications
 
 * Tradeoffs নিয়ে আলোচনা করুন:
-    * Clients এর সাথে external communication - [HTTP APIs following REST](../../bangla.md#representational-state-transfer-rest)
-    * Internal communications - [RPC](../../bangla.md#remote-procedure-call-rpc)
-* [Service discovery](../../bangla.md#service-discovery)
+    * Clients এর সাথে external communication - [HTTP APIs following REST](https://github.com/Shakil-khan59/system-design-primer-bangla#representational-state-transfer-rest)
+    * Internal communications - [RPC](https://github.com/Shakil-khan59/system-design-primer-bangla#remote-procedure-call-rpc)
+* [Service discovery](https://github.com/Shakil-khan59/system-design-primer-bangla#service-discovery)
 
 ### Security
 
-[security section](../../bangla.md#security) দেখুন।
+[security section](https://github.com/Shakil-khan59/system-design-primer-bangla#security) দেখুন।
 
 ### Latency numbers
 
-[Latency numbers every programmer should know](../../bangla.md#latency-numbers-every-programmer-should-know) দেখুন।
+[Latency numbers every programmer should know](https://github.com/Shakil-khan59/system-design-primer-bangla#latency-numbers-every-programmer-should-know) দেখুন।
 
 ### Ongoing
 
 * Bottlenecks আসার সাথে সাথে address করতে আপনার system benchmark এবং monitor করা চালিয়ে যান
 * Scaling একটি iterative process
-
-
-
-
